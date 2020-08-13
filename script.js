@@ -92,11 +92,16 @@ function addNote(title, body, color, id) {
   pinButton.appendChild(pinIcon);
   noteFooter.appendChild(pinButton);
 
+  var binButton = document.createElement("button");
+  var binIcon = document.createElement("i");
+  binButton.className = "iconButton";
+  binIcon.className = "material-icons";
+  var binText = document.createTextNode("delete");
+  binIcon.appendChild(binText);
+  binButton.appendChild(binIcon);
+  noteFooter.appendChild(binButton);
+
   var archiveButton = document.createElement("button");
-  archiveButton.addEventListener("click", (e) => {
-    postNote(title, body, color, id,"archive")
-    deleteNote(id,"notes");
-  });
   var archiveIcon = document.createElement("i");
   archiveButton.className = "iconButton";
   archiveIcon.className = "material-icons";
@@ -108,15 +113,25 @@ function addNote(title, body, color, id) {
   noteCard.appendChild(noteTitle);
   noteCard.appendChild(noteBody);
   noteCard.appendChild(noteFooter);
+
+  archiveButton.addEventListener("click", (e) => {
+    postNote(title, body, color, id,"archive")
+    deleteNote(id,"notes");
+  });
   pinButton.addEventListener("click",(e)=>{
     postNote(title, body, color, id,"pin")
     deleteNote(id,"notes");
   })
+  binButton.addEventListener("click",(e)=>{
+    postNote(title, body, color, id,"bin")
+    deleteNote(id,"notes");
+  })
+
   notesContainer.insertBefore(noteCard, notesContainer.firstChild);
 }
 
 var selectedColor = null;
-var colorPickerButton = document.getElementsByClassName("iconButton")[1];
+var colorPickerButton = document.getElementsByClassName("iconButton")[0];
 colorPickerButton.addEventListener("click", (e) => {
   e.preventDefault();
   var picker = new Picker(colorPickerButton);
@@ -130,7 +145,7 @@ var noteBodyInput = document.getElementById("noteBodyInput");
 
 function submitForm(e) {
   e.preventDefault();
-  if (noteTitleInput.value !== "" || noteBodyInput !== "") {
+  if (noteTitleInput.value !== "" || noteBodyInput.value !== "") {
     addNote(noteTitleInput.value, noteBodyInput.value, selectedColor);
     postNote(noteTitleInput.value, noteBodyInput.value, selectedColor,"notes");
     noteTitleInput.value = "";
@@ -177,4 +192,9 @@ function postNote(noteTitle, noteBody, color,id,type) {
     color: color,
   };
   xhttp.send(JSON.stringify(data));
+}
+function deleteNote(id,type) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("DELETE", `http://localhost:3000/${type}/${id}`, true);
+  xhttp.send();
 }

@@ -6,3 +6,10 @@ noteBodyInput.addEventListener("focus", () => {
   noteFormFooter.style.display = "flex";
   noteBodyInput.focus();
 });
+document.addEventListener('click', function(event) {
+  var isClickInside = document.getElementsByClassName("noteForm")[0].contains(event.target);
+  if (!isClickInside) {
+    noteTitleInput.style.display = "none";
+  noteFormFooter.style.display = "none";
+  }
+});
