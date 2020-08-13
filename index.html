@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script src="https://unpkg.com/vanilla-picker@2"></script>
+    <title>Note Keeper</title>
+  </head>
+  <body>
+
+    <div class="topnav">
+     <a > welcome to seat keeper :)</a>
+    </div>    <div class="sidebar">
+      <a class="sidebarItem active" href="#notes"><i class="material-icons" >note</i> Notes</a>
+      <a class="sidebarItem" href="#archive"><i class="material-icons" >archive</i> Archive</a>
+      <a class="sidebarItem" href="#bin"><i class="material-icons" >delete_forever	</i> Bin</a>
+    </div>
+
+    <div class="content">
+    
+      <button class="openbtn" onclick="openNav()">☰</button>
+      <div class="pin-top-container"></div>
+      <form onsubmit="return false;" class="noteForm">
+        <input autocomplete="off" type="text" id="noteTitleInput" placeholder="Title" />
+        <input autocomplete="off" type="text" id="noteBodyInput" placeholder="Take a note..." />
+        <div class="formFooter">
+          <div class="iconButtonsContainer">
+            <button id="pin-icon" class="iconButton"><i class="material-icons">push_pin</i></button>
+            <button class="iconButton"><i class="material-icons">palette</i></button>
+          </div>
+          <input type="submit" value="Confirm"/>
+          
+        </div>
+      </form>
+
+      <div class="notes grabbable-grid"></div>
+    </div>
+    <script src="./script.js"></script>
+    <script src="./ui.js"></script>
+  </body>
+</html>
