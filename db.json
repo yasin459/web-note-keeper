@@ -38,9 +38,45 @@
     },
     {
       "title": "",
-      "text": "sdfdfa",
+      "text": "1",
+      "color": null,
+      "id": 9
+    },
+    {
+      "title": "",
+      "text": "",
       "color": null,
       "id": 10
+    },
+    {
+      "title": "",
+      "text": "",
+      "color": null,
+      "id": 11
+    },
+    {
+      "title": "",
+      "text": "",
+      "color": null,
+      "id": 12
+    },
+    {
+      "title": "",
+      "text": "",
+      "color": null,
+      "id": 13
+    },
+    {
+      "title": "",
+      "text": "",
+      "color": null,
+      "id": 14
+    },
+    {
+      "title": "",
+      "text": "",
+      "color": null,
+      "id": 15
     }
   ],
   "archive": [
@@ -73,6 +109,12 @@
       "title": "",
       "text": "",
       "color": null
+    },
+    {
+      "id": 16,
+      "title": "",
+      "text": "",
+      "color": null
     }
   ],
   "pin": [
@@ -87,16 +129,38 @@
       "title": "rwr",
       "text": "cfs",
       "color": "#00ccffff"
-    },{
+    },
+    {
       "id": 13,
       "title": "rwr",
       "text": "cfs",
       "color": "#00ccffff"
-    },{
+    },
+    {
       "id": 12,
       "title": "rwr",
       "text": "cfs",
       "color": "#00ccffff"
+    },
+    {
+      "id": 10,
+      "title": "",
+      "text": "sdfdfa",
+      "color": null
+    },
+    {
+      "id": 9,
+      "title": "1",
+      "text": "yasin",
+      "color": null
+    }
+  ],
+  "bin": [
+    {
+      "id": 9,
+      "title": "1",
+      "text": "yasin",
+      "color": null
     }
   ]
 }

@@ -176,7 +176,7 @@ input[type=submit] {
   border-radius: 5px;
   height: 120px;
   padding: 10px;
-  color: #b4c2bc;
+  color: white;
   cursor: move;
 
 }
@@ -239,6 +239,7 @@ input[type=submit] {
 
     width: 100%;
   display: flex;
+  z-index: 10;
   justify-content: center;
   align-items: center;
 }
@@ -287,4 +288,56 @@ input[type=submit] {
   background-color: #e3e7e338;
   /* border-radius: 20px; */
   
+}
+.pin-top-container > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color:transparent;
+  border: 2px solid #b4c2bc;
+  border-radius: 5px;
+  height: 120px;
+  padding: 10px;
+  color: white;
+  cursor: move;
+
+}
+.pin-top-container >div:hover{
+  animation: pulse 2s infinite;
+  
+
+}
+
+.pin-top-container > div > span {
+  font-size: 14px;
+  font-family: Roboto-Light;
+}
+.pin-header{
+  margin-top: 2%;
+  display: flex;
+  /* width: 60%; */
+  font-size: 72px;
+  border-radius: 15px;  
+ background-color: turquoise;
+
+}
+.pin-header >i{
+  font-size: 72px;
+  background: linear-gradient(to right, #fbfdfd, #1eee39);
+  /* background: -webkit-linear-gradient(#eee, #333); */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+ 
+}
+.pin-header >a {
+  font-size: 60px;
+  background: linear-gradient(to right, #fbfdfd, #1eee39);
+  /* background: -webkit-linear-gradient(#eee, #333); */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.pin-holder{
+  background-color: rgb(27, 190, 231);
+  border-radius: 15px;
+  /* opacity: 0.05; */
 }
