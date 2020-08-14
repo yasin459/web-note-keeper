@@ -68,6 +68,10 @@ function addNote(title, body, color, id) {
   var noteCard = document.createElement("div");
   noteCard.style.backgroundColor = color;
 
+  var img = document.createElement("img"); 
+  img.src = "jack.jpg"; 
+  if(id >=10) noteCard.appendChild(img)
+
   var titleText = document.createTextNode(title);
   var noteTitle = document.createElement("h4");
   noteTitle.appendChild(titleText);
@@ -139,7 +143,10 @@ colorPickerButton.addEventListener("click", (e) => {
     selectedColor = color.hex;
   };
 });
-
+var imagePickerButton = document.getElementsByClassName("iconButton")[1];
+imagePickerButton.addEventListener("click",(e)=>{
+  var picker = new Picker()
+})
 var noteTitleInput = document.getElementById("noteTitleInput");
 var noteBodyInput = document.getElementById("noteBodyInput");
 
@@ -147,7 +154,8 @@ function submitForm(e) {
   e.preventDefault();
   if (noteTitleInput.value !== "" || noteBodyInput.value !== "") {
     addNote(noteTitleInput.value, noteBodyInput.value, selectedColor);
-    postNote(noteTitleInput.value, noteBodyInput.value, selectedColor,"notes");
+    postNote(noteTitleInput.value, noteBodyInput.value, selectedColor,null,"notes");
+    console.log("after")
     noteTitleInput.value = "";
     noteBodyInput.value = "";
     selectedColor = null;
@@ -182,6 +190,9 @@ function getNotes(type) {
 getNotes("notes");
 
 function postNote(noteTitle, noteBody, color,id,type) {
+  console.log("before: "+ id)
+  console.log("before: "+ type)
+
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", `http://localhost:3000/${type}`, true);
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");

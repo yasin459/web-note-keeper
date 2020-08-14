@@ -20,10 +20,7 @@
     </div>
 
     <div class="content">
-      
       <button class="openbtn" onclick="openNav()">☰</button>
-      
-      
       <form onsubmit="return false;" class="noteForm">
         <input autocomplete="off" type="text" id="noteTitleInput" placeholder="Title" />
         <input autocomplete="off" type="text" id="noteBodyInput" placeholder="Take a note..." />
@@ -31,14 +28,19 @@
           <div class="iconButtonsContainer">
             <!-- <button id="pin-icon" class="iconButton"><i class="material-icons">push_pin</i></button> -->
             <button class="iconButton"><i class="material-icons">palette</i></button>
+            <button class="iconButton"><i class="material-icons">image</i></button>
+
           </div>
+
           <input type="submit" value="Confirm"/>
-          
         </div>
       </form>
-
       <div class="notes grabbable-grid"></div>
+      <div class="bottom-div">
+    
+      </div>
     </div>
+    <!-- <div class="bottom"></div> -->
     <script src="./script.js"></script>
     <script src="./ui.js"></script>
   </body>

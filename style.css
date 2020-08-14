@@ -174,7 +174,7 @@ input[type=submit] {
   background-color:transparent;
   border: 2px solid #b4c2bc;
   border-radius: 5px;
-  height: 120px;
+  min-height: 120px;
   padding: 10px;
   color: white;
   cursor: move;
@@ -185,10 +185,18 @@ input[type=submit] {
   
 
 }
-
+.notes > div > img {
+  max-height: 50%;
+  max-width: 100%;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
 .notes > div > span {
   font-size: 14px;
   font-family: Roboto-Light;
+}
+.notes > div > div {
+  margin-top: 10px;
 }
 
 @media screen and (max-width: 992px) and (min-width: 601px) {
@@ -274,8 +282,8 @@ input[type=submit] {
     color: #16ee16;
   }
 }
-.pin-top-container {
-  /* display: block; */
+/* .pin-top-container {
+  display: block;
   top: 100px;
   margin: 20px auto 0 auto;
   border: 1px solid grey;
@@ -286,10 +294,10 @@ input[type=submit] {
   padding: 10px;
   height: 100%;
   background-color: #e3e7e338;
-  /* border-radius: 20px; */
+  border-radius: 20px;
   
-}
-.pin-top-container > div {
+} */
+/* .pin-top-container > div {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -300,12 +308,18 @@ input[type=submit] {
   padding: 10px;
   color: white;
   cursor: move;
+  position: relative;
 
 }
 .pin-top-container >div:hover{
   animation: pulse 2s infinite;
   
 
+}
+.pin-top-container > div > img {
+  max-height: 50%;
+  max-width: 100%;
+  border-radius: 5px;
 }
 
 .pin-top-container > div > span {
@@ -316,7 +330,7 @@ input[type=submit] {
   margin-top: 2%;
   display: flex;
   /* width: 60%; */
-  font-size: 72px;
+  /* font-size: 72px;
   border-radius: 15px;  
  background-color: turquoise;
 
@@ -324,7 +338,7 @@ input[type=submit] {
 .pin-header >i{
   font-size: 72px;
   background: linear-gradient(to right, #fbfdfd, #1eee39);
-  /* background: -webkit-linear-gradient(#eee, #333); */
+  background: -webkit-linear-gradient(#eee, #333);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
  
@@ -332,12 +346,17 @@ input[type=submit] {
 .pin-header >a {
   font-size: 60px;
   background: linear-gradient(to right, #fbfdfd, #1eee39);
-  /* background: -webkit-linear-gradient(#eee, #333); */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .pin-holder{
   background-color: rgb(27, 190, 231);
   border-radius: 15px;
-  /* opacity: 0.05; */
+  opacity: 0.05;
+} 
+*/
+.bottom-div{
+  position: relative;
+  height: 200px;
+  background-color: red;
 }
