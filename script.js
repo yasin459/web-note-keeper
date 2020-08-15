@@ -165,13 +165,15 @@ function submitForm(e) {
 }
 
 function showNotes() {
-  
-  for (myObj of allNotesContainer) {
-    myObj.innerHTMl=""
-  }
+  console.log("shownote : enter")
+  console.log("notes to show "+notesToShow)
+  allNotes=[]
+  console.log("before " +allNotes)
   notesToShow.forEach((note) =>
     addNote(note.title, note.text, note.color, note.id)
   );
+  
+  console.log(allNotes)
   addDivsToCol();
 }
 
@@ -184,6 +186,7 @@ function getNotes(type) {
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       notesToShow = JSON.parse(xhttp.responseText);
+      console.log(notesToShow)
       showNotes()
     }
   };
@@ -223,6 +226,10 @@ var state = 4
 var i;
 
 function addDivsToCol(){
+  console.log("all note : " +allNotes)
+  for (myObj of allNotesContainer) {
+    myObj.innerHTML=""
+  }
   if(state===1){
     var container1=allNotesContainer[0]
     for (note of allNotes) {
@@ -276,16 +283,16 @@ function one() {
 // Two images side by side
 function two() {
   for (i = 0; i < elements.length; i++) {
-    elements[i].style.msFlex = "40%";  // IE10
-    elements[i].style.flex = "40%";
+    elements[i].style.msFlex = "35%";  // IE10
+    elements[i].style.flex = "35%";
   }
 }
 
 // Four images side by side
 function four() {
   for (i = 0; i < elements.length; i++) {
-    elements[i].style.msFlex = "20%";  // IE10
-    elements[i].style.flex = "20%";
+    elements[i].style.msFlex = "16%";  // IE10
+    elements[i].style.flex = "16%";
   }
 }
 
@@ -294,6 +301,9 @@ var header = document.getElementById("myHeader");
 var btns = header.getElementsByClassName("btn");
 for (var i = 0; i < btns.length; i++) {
   btns[i].addEventListener("click", function() {
+    if(i===0) state=1;
+    if(i===1) state=2;
+    if(i===2) state=3;
     var current = document.getElementsByClassName("btn active");
     current[0].className = current[0].className.replace(" active", "");
     this.className += " active";
