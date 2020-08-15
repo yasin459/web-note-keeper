@@ -1,5 +1,6 @@
-
-var notesContainer = document.getElementsByClassName("notes")[0];
+var allNotesContainer = document.getElementsByClassName("notes");
+var allNotes=[];
+// var notesContainer = document.getElementsByClassName("notes")[0];
 
 function openNav() {
   document.getElementsByClassName("sidebar")[0].style.width = "200px";
@@ -130,8 +131,8 @@ function addNote(title, body, color, id) {
     postNote(title, body, color, id,"bin")
     deleteNote(id,"notes");
   })
-
-  notesContainer.insertBefore(noteCard, notesContainer.firstChild);
+  allNotes.push(noteCard)
+  // notesContainer.insertBefore(noteCard, notesContainer.firstChild);
 }
 
 var selectedColor = null;
@@ -154,6 +155,7 @@ function submitForm(e) {
   e.preventDefault();
   if (noteTitleInput.value !== "" || noteBodyInput.value !== "") {
     addNote(noteTitleInput.value, noteBodyInput.value, selectedColor);
+    addDivsToCol();
     postNote(noteTitleInput.value, noteBodyInput.value, selectedColor,null,"notes");
     console.log("after")
     noteTitleInput.value = "";
@@ -163,10 +165,14 @@ function submitForm(e) {
 }
 
 function showNotes() {
-  notesContainer.innerHTML = "";
+  
+  for (myObj of allNotesContainer) {
+    myObj.innerHTMl=""
+  }
   notesToShow.forEach((note) =>
     addNote(note.title, note.text, note.color, note.id)
   );
+  addDivsToCol();
 }
 
 
@@ -208,4 +214,88 @@ function deleteNote(id,type) {
   var xhttp = new XMLHttpRequest();
   xhttp.open("DELETE", `http://localhost:3000/${type}/${id}`, true);
   xhttp.send();
+}
+
+
+var elements = document.getElementsByClassName("column notes grabbable-grid");
+var state = 4
+// Declare a loop variable
+var i;
+
+function addDivsToCol(){
+  if(state===1){
+    var container1=allNotesContainer[0]
+    for (note of allNotes) {
+      container1.appendChild(note)
+    }
+  }else if(state===2){
+    var container1=allNotesContainer[0]
+    var container2=allNotesContainer[1]
+    var temp=0
+    for (note of allNotes) {
+      if(temp===0){
+        temp=1
+        container1.appendChild(note)
+      }else{
+        temp=0
+        container2.appendChild(note)
+      }
+    }
+
+  }else if(state===4){
+    var container1=allNotesContainer[0]
+    var container2=allNotesContainer[1]
+    var container3=allNotesContainer[2]
+    var container4=allNotesContainer[3]
+    var temp=0
+    for (note of allNotes) {
+      if(temp===0){
+        temp=1
+        container1.appendChild(note)
+      }else if(temp===1){
+        temp=2
+        container2.appendChild(note)
+      }else if(temp===2){
+        temp=3
+        container3.appendChild(note)
+      }else {
+        temp=0
+        container4.appendChild(note)
+      }
+    }
+  }
+}
+// Full-width images
+function one() {
+    for (i = 0; i < elements.length; i++) {
+    elements[i].style.msFlex = "100%";  // IE10
+    elements[i].style.flex = "100%";
+  }
+}
+
+// Two images side by side
+function two() {
+  for (i = 0; i < elements.length; i++) {
+    elements[i].style.msFlex = "40%";  // IE10
+    elements[i].style.flex = "40%";
+  }
+}
+
+// Four images side by side
+function four() {
+  for (i = 0; i < elements.length; i++) {
+    elements[i].style.msFlex = "20%";  // IE10
+    elements[i].style.flex = "20%";
+  }
+}
+
+// Add active class to the current button (highlight it)
+var header = document.getElementById("myHeader");
+var btns = header.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("btn active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
 }
