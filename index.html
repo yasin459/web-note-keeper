@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="./style.css" />
     <script src="https://unpkg.com/vanilla-picker@2"></script>
     <title>Note Keeper</title>
@@ -11,8 +12,11 @@
   <body>
 
     <div class="topnav">
-     <a > welcome to seat keeper :)</a>
-    </div>    <div class="sidebar">
+     <a >Takeeper</a>
+     <a id="inspiringQ">your dream note keeper</a>
+    </div>  
+    
+    <div class="sidebar">
       <a class="sidebarItem active" href="#notes"><i class="material-icons" >note</i> Notes</a>
       <a class="sidebarItem" href="#archive"><i class="material-icons" >archive</i> Archive</a>
       <a class="sidebarItem" href="#pin"><i class="material-icons" >fiber_pin</i> pin </a>
@@ -20,44 +24,33 @@
     </div>
 
     <div class="content">
-      <button class="openbtn" onclick="openNav()">☰</button>
-      <form onsubmit="return false;" class="noteForm">
-        <input autocomplete="off" type="text" id="noteTitleInput" placeholder="Title" />
-        <input autocomplete="off" type="text" id="noteBodyInput" placeholder="Take a note..." />
-        <div class="formFooter">
-          <div class="iconButtonsContainer">
-            <!-- <button id="pin-icon" class="iconButton"><i class="material-icons">push_pin</i></button> -->
-            <button class="iconButton"><i class="material-icons">palette</i></button>
-            <!-- <button class="iconButton" onclick="document.getElementById('file-input').click();"><i class="material-icons">image</i></button> -->
-            <button class="iconButton"><i class="material-icons">image</i></button>
-
+        <button class="openbtn" onclick="openNav()">☰</button>
+        <form onsubmit="return false;" class="noteForm">
+          <input autocomplete="off" type="text" id="noteTitleInput" placeholder="Title" />
+          <input autocomplete="off" type="text" id="noteBodyInput" placeholder="Take a note..." />
+          <div class="formFooter">
+            <div class="iconButtonsContainer">
+              <button class="iconButton"><i class="material-icons">palette</i></button>
+              <button class="iconButton"><i class="material-icons">image</i></button>
+            </div>
+            <input type="submit" value="Confirm"/>
           </div>
-
-          <input type="submit" value="Confirm"/>
+        </form>
+        <div class="header" id="myHeader">
+          <button class="btn" onclick="one()">1</button>
+          <button class="btn" onclick="two()">2</button>
+          <button class="btn active" onclick="four()">4</button>
         </div>
-      </form>
-      <div class="header" id="myHeader">
-        <h1>Image Grid</h1>
-        <p>Click on the buttons to change the grid view.</p>
-        <button class="btn" onclick="one()">1</button>
-        <button class="btn" onclick="two()">2</button>
-        <button class="btn active" onclick="four()">4</button>
-      </div>
-      <div class="row">
-        <div  class="column notes grabbable-grid"></div>
-        <div  class="column notes grabbable-grid"></div>
-        <div  class="column notes grabbable-grid"></div>
-        <div  class="column notes grabbable-grid"></div>
-      </div>
-      <!-- <div class="notes grabbable-grid"></div> -->
-      <div class="bottom-div">
-    
+        <div class="row">
+          <div  class="column notes grabbable-grid"></div>
+          <div  class="column notes grabbable-grid"></div>
+          <div  class="column notes grabbable-grid"></div>
+          <div  class="column notes grabbable-grid"></div>
+        </div>
       </div>
     </div>
-    <!-- <div class="bottom"></div> -->
     <script src="./script.js"></script>
     <script src="./ui.js"></script>
-
   </body>
 
 </html>

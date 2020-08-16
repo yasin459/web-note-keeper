@@ -1,15 +1,114 @@
 {
-  "notes": [],
-  "archive": [
+  "notes": [
     {
       "id": 1,
-      "title": "",
-      "text": "asadad",
+      "title": "111",
+      "text": "1111",
+      "color": null,
+      "image": null,
+      "type": "notes"
+    },
+    {
+      "id": 5,
+      "title": "555",
+      "text": "5555",
+      "color": null,
+      "image": null,
+      "type": "notes"
+    },
+    {
+      "id": 6,
+      "title": "666",
+      "text": "6666",
+      "color": null,
+      "image": null,
+      "type": "notes"
+    },
+    {
+      "id": 7,
+      "title": "7777",
+      "text": "7777",
+      "color": null,
+      "image": null,
+      "type": "notes"
+    },
+    {
+      "id": 9,
+      "title": "999",
+      "text": "9999",
+      "color": "#ff4000ff",
+      "image": null,
+      "type": "notes"
+    },
+    {
+      "id": 11,
+      "title": "121212",
+      "text": "121212",
+      "color": null,
+      "image": null,
+      "type": "notes"
+    },
+    {
+      "id": 12,
+      "title": "131313",
+      "text": "131313",
+      "color": "#00ff21ff",
+      "image": null,
+      "type": "notes"
+    },
+    {
+      "id": 13,
+      "title": "141414",
+      "text": "141414",
+      "color": "#0800ffff",
+      "image": null,
+      "type": "notes"
+    }
+  ],
+  "bin": [
+    {
+      "id": 3,
+      "title": "333",
+      "text": "33333",
+      "color": null,
+      "image": null,
+      "type": "bin"
+    }
+  ],
+  "pin": [
+    {
+      "id": 2,
+      "title": "2222",
+      "text": "22222",
+      "color": null,
+      "image": null,
+      "type": "pin"
+    },
+    {
+      "id": 10,
+      "title": "1000",
+      "text": "1000",
+      "color": "#e400ffff",
+      "image": null,
+      "type": "pin"
+    }
+  ],
+  "archive": [
+    {
+      "id": 4,
+      "title": "4444",
+      "text": "44444",
       "color": null,
       "image": null,
       "type": "archive"
+    },
+    {
+      "id": 8,
+      "title": "8888",
+      "text": "8888",
+      "color": "#00ccffff",
+      "image": null,
+      "type": "archive"
     }
-  ],
-  "pin": [],
-  "bin": []
+  ]
 }

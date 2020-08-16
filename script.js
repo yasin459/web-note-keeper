@@ -1,3 +1,5 @@
+var maxID=0;
+console.log("ssss: "+maxID)
 var allNotesContainer = document.getElementsByClassName("notes");
 var allNotes=[];
 // var notesContainer = document.getElementsByClassName("notes")[0];
@@ -70,20 +72,10 @@ function addNote(title, body, color, id,type) {
   noteCard.style.backgroundColor = color;
   
   
-  if(imageSrc!==undefined && imageSrc!==null)
-{
- 
- 
-    // console.log(" image:   " +image_src)
-    
+  if(imageSrc!==undefined && imageSrc!==null){
     var img = document.createElement("img"); 
     img.src=imageSrc
-    
-    // console.log(img.src = image)
-    console.log(" img:   "+img)
     noteCard.appendChild(img)
-    console.log("bbbbaaaaaah")
-  
   }
   
 
@@ -134,15 +126,18 @@ function addNote(title, body, color, id,type) {
   noteCard.appendChild(noteFooter);
   console.log(id)
   archiveButton.addEventListener("click", (e) => {
+    // imageSrc=img.src;
     postNote(title, body, color, id,"archive")
     // if(notesSidebarItem.classList.contains("active"))
     deleteNote(id,type);
   });
   pinButton.addEventListener("click",(e)=>{
+    // imageSrc=img.src;
     postNote(title, body, color, id,"pin")
     deleteNote(id,type);
   })
   binButton.addEventListener("click",(e)=>{
+    // imageSrc=img.src;
     postNote(title, body, color, id,"bin")
     deleteNote(id,type);
   })
@@ -172,7 +167,7 @@ fileInput.type = 'file';
 reader.onload = e => {
   // console.log("title ::::::"+title)
   imageSrc = e.target.result;
-  console.log("did it????")
+  // console.log("did it????")
 }
 fileInput.addEventListener('change', e => {
   selectedImage = e.target.files[0];
@@ -187,12 +182,16 @@ var noteBodyInput = document.getElementById("noteBodyInput");
 
 function submitForm(e) {
   e.preventDefault();
-  console.log("image in submit form : "+selectedImage)
+  // console.log("image in submit form : "+selectedImage)
   if (noteTitleInput.value !== "" || noteBodyInput.value !== "") {
-    addNote(noteTitleInput.value, noteBodyInput.value, selectedColor,null,"notes");
+    maxID++;
+    console.log("s f : "+imageSrc)
+    addNote(noteTitleInput.value, noteBodyInput.value, selectedColor,maxID,"notes");
+    // return
+    postNote(noteTitleInput.value, noteBodyInput.value, selectedColor,maxID,"notes");
+
     addDivsToCol();
-    postNote(noteTitleInput.value, noteBodyInput.value, selectedColor,null,"notes");
-    console.log("after")
+    // console.log("after")
     noteTitleInput.value = "";
     noteBodyInput.value = "";
     selectedColor = null;
@@ -202,16 +201,16 @@ function submitForm(e) {
 }
 
 function showNotes() {
-  console.log("shownote : enter")
-  console.log("notes to show "+notesToShow)
+  // console.log("shownote : enter")
+  // console.log("notes to show "+notesToShow)
   allNotes=[]
-  console.log("before " +allNotes)
+  // console.log("before " +allNotes)
   notesToShow.forEach((note) =>{
     imageSrc=note.image
       addNote(note.title, note.text, note.color, note.id,note.type)
   });
-  
-  console.log(allNotes)
+  imageSrc=null;
+  // console.log(allNotes)
   addDivsToCol();
 }
 
@@ -220,19 +219,36 @@ var noteFormSubmitButton = document.querySelector("input[type=submit]");
 noteFormSubmitButton.addEventListener("click", submitForm);
 
 function getNotes(type) {
-  console.log("entering get note")
+  // console.log("entering get note")
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       notesToShow = JSON.parse(xhttp.responseText);
+      // notesToShow.forEach((note) => {if(note.id>maxID) maxID=note.id;});
+      getMaxId("notes")
+      getMaxId("bin")
+      getMaxId("pin")
+      getMaxId("archive")
       console.log(notesToShow)
       showNotes()
     }
   };
-  console.log("before get")
+
+ 
   xhttp.open("GET", `http://localhost:3000/${type}`, true);
-  console.log("after get before send")
   xhttp.send();
+}
+function getMaxId(type) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      notesToShow = JSON.parse(xhttp.responseText);
+      notesToShow.forEach((note) => {if(note.id>maxID) maxID=note.id;});
+  
+    }
+  };
+xhttp.open("GET", `http://localhost:3000/${type}`, true);
+xhttp.send();
 }
 
 
@@ -240,8 +256,8 @@ function getNotes(type) {
 getNotes("notes");
 
 function postNote(noteTitle, noteBody, color,id,type) {
-  console.log("before: "+ id)
-  console.log("before: "+ type)
+  // console.log("before: "+ id)
+  // console.log("before: "+ type)
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", `http://localhost:3000/${type}`, true);
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -253,7 +269,7 @@ function postNote(noteTitle, noteBody, color,id,type) {
     image : imageSrc,
     type : type,
   };
-  console.log("this is image src: "+imageSrc)
+  // console.log("this is image src: "+imageSrc)
   xhttp.send(JSON.stringify(data));
 }
 function deleteNote(id,type) {
@@ -269,7 +285,7 @@ var state = 4
 var i;
 
 function addDivsToCol(){
-  console.log("all note : " +allNotes)
+  // console.log("all note : " +allNotes)
   for (myObj of allNotesContainer) {
     myObj.innerHTML=""
   }
@@ -314,7 +330,7 @@ function addDivsToCol(){
       }
     }
   }
-  console.log(" add div ended")
+  // console.log(" add div ended")
 }
 // Full-width images
 function one() {
